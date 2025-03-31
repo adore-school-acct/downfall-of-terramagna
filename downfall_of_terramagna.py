@@ -441,23 +441,22 @@ def fight_soldier(pattern: int, your_health: int) -> int:
     duel_pattern = []
 
     # Determine attack pattern of soldier
-    match pattern:
-        case 1:
-            # Both blocks, then attacks the legs, body, and head in order. Alternates between left and right
-            duel_pattern = [(4, 1), (1, 1), (5, 2), (2, 2), (6, 1), (3, 1), (4, 2), (1, 2), (5, 1), (2, 1), (6, 2), (3, 2)]
-        case 2:
-            # Attacks the leg twice, then blocks the body, then alternates between jumping or ducking.
-            # Weirdly, the soldier attacks / defends left when jumping or right when ducking
-            duel_pattern = [(1, 1), (1, 1), (5, 1), (7, 0), (1, 2), (1, 2), (5, 2), (8, 0)]
-        case 3:
-            # Attacks conservatively. Blocks the body either left or right, jumps, ducks, then attacks the body from the opposite direction of the block.
-            # Every second attack, soldier also attacks head (same dir.).
-            duel_pattern = [(5, 1), (7, 0), (8, 0), (2, 2), (5, 2), (7, 0), (8, 0), (2, 1), (3, 1)]
-        case 4:
-            # Attacks more aggresively than 3. Attacks the body either left or right, jumps, attacks head (opp. dir. of body attack), blocks head of same dir. of head attack, ducks, attacks legs (opp. dir. of head attack)
-            duel_pattern = [(2, 1), (7, 0), (3, 2), (6, 2), (8, 0), (1, 1), (2, 2), (7, 0), (3, 1), (6, 1), (8, 0), (1, 2)]
-        case _:
-            raise ValueError("Invalid soldier pattern")
+    if pattern == 1:
+        # Both blocks, then attacks the legs, body, and head in order. Alternates between left and right
+        duel_pattern = [(4, 1), (1, 1), (5, 2), (2, 2), (6, 1), (3, 1), (4, 2), (1, 2), (5, 1), (2, 1), (6, 2), (3, 2)]
+    elif pattern == 2:
+        # Attacks the leg twice, then blocks the body, then alternates between jumping or ducking.
+        # Weirdly, the soldier attacks / defends left when jumping or right when ducking
+        duel_pattern = [(1, 1), (1, 1), (5, 1), (7, 0), (1, 2), (1, 2), (5, 2), (8, 0)]
+    elif pattern == 3:
+        # Attacks conservatively. Blocks the body either left or right, jumps, ducks, then attacks the body from the opposite direction of the block.
+        # Every second attack, soldier also attacks head (same dir.).
+        duel_pattern = [(5, 1), (7, 0), (8, 0), (2, 2), (5, 2), (7, 0), (8, 0), (2, 1), (3, 1)]
+    elif pattern == 4:
+        # Attacks more aggresively than 3. Attacks the body either left or right, jumps, attacks head (opp. dir. of body attack), blocks head of same dir. of head attack, ducks, attacks legs (opp. dir. of head attack)
+        duel_pattern = [(2, 1), (7, 0), (3, 2), (6, 2), (8, 0), (1, 1), (2, 2), (7, 0), (3, 1), (6, 1), (8, 0), (1, 2)]
+    else:
+        raise ValueError("Invalid soldier pattern")
     
     # Duel with soldier. Continues until one dies.
 
@@ -691,73 +690,72 @@ def print_duel_msg(move: tuple[int, int], who: int):
     if who not in {0, 1, 2}:
         raise ValueError("Invalid 'who' value")
     
-    match move:
-        # Face the consequences of invalid input
-        case (0, 0):
-            if who != 0: raise ValueError("Invalid move")
-            else: print("Invalid input given. You make no move. You will face the consequences.")
-        # Attack messages
-        case (1, 1):
-            if who == 1: print("The enemy soldier swings his sword towards your left leg.")
-            elif who == 2: print("The emperor swings his sword towards your left leg.")
-            else: print("You swing your sword toward the enemy's left leg.")
-        case (1, 2):
-            if who == 1: print("The enemy soldier swings his sword towards your right leg.")
-            elif who == 2: print("The emperor swings his sword towards your right leg.")
-            else: print("You swing your sword toward the enemy's right leg.")
-        case (2, 1):
-            if who == 1: print("The enemy soldier swings his sword towards the left of your body.")
-            elif who == 2: print("The emperor swings his sword towards the left of your body.")
-            else: print("You swing your sword towards the left of the enemy's body.")
-        case (2, 2):
-            if who == 1: print("The enemy soldier swings his sword towards the right of your body.")
-            elif who == 2: print("The emperor swings his sword towards the right of your body.")
-            else: print("You swing your sword towards the right of the enemy's body.")
-        case (3, 1):
-            if who == 1: print("The enemy soldier swings his sword towards the left of your head.")
-            elif who == 2: print("The emperor swings his sword towards the left of your head.")
-            else: print("You swing your sword towards the left of the enemy's head.")
-        case (3, 2):
-            if who == 1: print("The enemy soldier swings his sword towards the right of your head.")
-            elif who == 2: print("The emperor swings his sword towards the right of your head.")
-            else: print("You swing your sword towards the right of the enemy's head.")
-        # Block messages
-        case (4, 1):
-            if who == 1: print("The enemy soldier blocks a sword attack towards his left leg.")
-            elif who == 2: print("The emperor blocks a sword attack towards his left leg.")
-            else: print("You block a sword attack towards your left leg.")
-        case (4, 2):
-            if who == 1: print("The enemy soldier blocks a sword attack towards his right leg.")
-            elif who == 2: print("The emperor blocks a sword attack towards his right leg.")
-            else: print("You block a sword attack towards your right leg.")
-        case (5, 1):
-            if who == 1: print("The enemy soldier blocks a sword attack towards the left of his body.")
-            elif who == 2: print("The emperor blocks a sword attack towards the left of his body.")
-            else: print("You block a sword attack towards the left of your body.")
-        case (5, 2):
-            if who == 1: print("The enemy soldier blocks a sword attack towards the right of his body.")
-            elif who == 2: print("The emperor blocks a sword attack towards the right of his body.")
-            else: print("You block a sword attack towards the right of your body.")
-        case (6, 1):
-            if who == 1: print("The enemy soldier blocks a sword attack towards the left of his head.")
-            elif who == 2: print("The emperor blocks a sword attack towards the left of his head.")
-            else: print("You block a sword attack towards the left of your head.")
-        case (6, 2):
-            if who == 1: print("The enemy soldier blocks a sword attack towards the right of his head.")
-            elif who == 2: print("The emperor blocks a sword attack towards the right of his head.")
-            else: print("You block a sword attack towards the right of your head.")
-        # Dodge messages
-        case (7, 0):
-            if who == 1: print("The enemy soldier jumps.")
-            elif who == 2: print("The emperor jumps.")
-            else: print("You jump.")
-        case (8, 0):
-            if who == 1: print("The enemy soldier ducks.")
-            elif who == 2: print("The emperor ducks.")
-            else: print("You duck.")
-        # Error
-        case _:
-            raise ValueError("Invalid move given")
+    # Face the consequences of invalid input
+    if move == (0, 0):
+        if who != 0: raise ValueError("Invalid move")
+        else: print("Invalid input given. You make no move. You will face the consequences.")
+    # Attack messages
+    elif move == (1, 1):
+        if who == 1: print("The enemy soldier swings his sword towards your left leg.")
+        elif who == 2: print("The emperor swings his sword towards your left leg.")
+        else: print("You swing your sword toward the enemy's left leg.")
+    elif move == (1, 2):
+        if who == 1: print("The enemy soldier swings his sword towards your right leg.")
+        elif who == 2: print("The emperor swings his sword towards your right leg.")
+        else: print("You swing your sword toward the enemy's right leg.")
+    elif move == (2, 1):
+        if who == 1: print("The enemy soldier swings his sword towards the left of your body.")
+        elif who == 2: print("The emperor swings his sword towards the left of your body.")
+        else: print("You swing your sword towards the left of the enemy's body.")
+    elif move == (2, 2):
+        if who == 1: print("The enemy soldier swings his sword towards the right of your body.")
+        elif who == 2: print("The emperor swings his sword towards the right of your body.")
+        else: print("You swing your sword towards the right of the enemy's body.")
+    elif move == (3, 1):
+        if who == 1: print("The enemy soldier swings his sword towards the left of your head.")
+        elif who == 2: print("The emperor swings his sword towards the left of your head.")
+        else: print("You swing your sword towards the left of the enemy's head.")
+    elif move == (3, 2):
+        if who == 1: print("The enemy soldier swings his sword towards the right of your head.")
+        elif who == 2: print("The emperor swings his sword towards the right of your head.")
+        else: print("You swing your sword towards the right of the enemy's head.")
+    # Block messages
+    elif move == (4, 1):
+        if who == 1: print("The enemy soldier blocks a sword attack towards his left leg.")
+        elif who == 2: print("The emperor blocks a sword attack towards his left leg.")
+        else: print("You block a sword attack towards your left leg.")
+    elif move == (4, 2):
+        if who == 1: print("The enemy soldier blocks a sword attack towards his right leg.")
+        elif who == 2: print("The emperor blocks a sword attack towards his right leg.")
+        else: print("You block a sword attack towards your right leg.")
+    elif move == (5, 1):
+        if who == 1: print("The enemy soldier blocks a sword attack towards the left of his body.")
+        elif who == 2: print("The emperor blocks a sword attack towards the left of his body.")
+        else: print("You block a sword attack towards the left of your body.")
+    elif move == (5, 2):
+        if who == 1: print("The enemy soldier blocks a sword attack towards the right of his body.")
+        elif who == 2: print("The emperor blocks a sword attack towards the right of his body.")
+        else: print("You block a sword attack towards the right of your body.")
+    elif move == (6, 1):
+        if who == 1: print("The enemy soldier blocks a sword attack towards the left of his head.")
+        elif who == 2: print("The emperor blocks a sword attack towards the left of his head.")
+        else: print("You block a sword attack towards the left of your head.")
+    elif move == (6, 2):
+        if who == 1: print("The enemy soldier blocks a sword attack towards the right of his head.")
+        elif who == 2: print("The emperor blocks a sword attack towards the right of his head.")
+        else: print("You block a sword attack towards the right of your head.")
+    # Dodge messages
+    elif move == (7, 0):
+        if who == 1: print("The enemy soldier jumps.")
+        elif who == 2: print("The emperor jumps.")
+        else: print("You jump.")
+    elif move == (8, 0):
+        if who == 1: print("The enemy soldier ducks.")
+        elif who == 2: print("The emperor ducks.")
+        else: print("You duck.")
+    # Error
+    else:
+        raise ValueError("Invalid move given")
 
 # Calculate damage in fights with soldiers and emperor, returns a tuple: (your_damage, enemy_damage)
 
