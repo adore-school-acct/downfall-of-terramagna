@@ -12,6 +12,7 @@ import sys
 import os
 import art
 import random as rand
+import textwrap
 
 # Main function
 
@@ -66,6 +67,11 @@ def main():
     else:
         enrage_public()
 
+# Word wrap, shortcut
+
+def wrap(text: str) -> str:
+    return textwrap.fill(text, 100)
+
 # Print text word by word
 
 def print_each_word(text: str, delay: float = 0.1):
@@ -77,14 +83,13 @@ def print_each_word(text: str, delay: float = 0.1):
 
     # Split text and loop through each word
 
-    for word in text.split():
+    for word in text.split(" "):
         # Print word
 
-        print(word, end=" ")
+        print(word, end=" ", flush=True)
 
         # Time delay
 
-        sys.stdout.flush() # does not work without this
         time.sleep(delay)
     
     # Newline print
@@ -121,7 +126,7 @@ def introduction():
     # Print out lines
     # For each line, user presses enter to continue or types SKIP to skip
 
-    print_each_word("In the region now known as Terramagna, seven kingdoms fought violent wars until the founder, Emperor Terramagna I, reunited the kingdoms to form the Empire of Terramagna in 1207 YAE (Years After Enlightenment).")
+    print_each_word(wrap("In the region now known as Terramagna, seven kingdoms fought violent wars until the founder, Emperor Terramagna I, reunited the kingdoms to form the Empire of Terramagna in 1207 YAE (Years After Enlightenment)."))
 
     skip_intro = input("\nPress ENTER to continue or type SKIP to skip intro: ")
 
@@ -130,7 +135,7 @@ def introduction():
     
     print()
     
-    print_each_word("For a while, conditions in Terramagna improved. During Terramagna I's rule, Terramagna experienced significant economic growth, the creation of new art and machinery, prosperity, and most importantly, peace.")
+    print_each_word(wrap("For a while, conditions in Terramagna improved. During Terramagna I's rule, Terramagna experienced significant economic growth, the creation of new art and machinery, prosperity, and most importantly, peace."))
 
     skip_intro = input("\nPress ENTER to continue or type SKIP to skip intro: ")
 
@@ -139,7 +144,7 @@ def introduction():
     
     print()
 
-    print_each_word("Good things must always come to an end, though. In 1220 YAE, Terramagna I died from an unknown cause without an heir. The most powerful of noblemen, Heiltur Dictatorus, took over the throne as Heiltur I.")
+    print_each_word(wrap("Good things must always come to an end, though. In 1220 YAE, Terramagna I died from an unknown cause without an heir. The most powerful of noblemen, Heiltur Dictatorus, took over the throne as Heiltur I."))
 
     skip_intro = input("\nPress ENTER to continue or type SKIP to skip intro: ")
 
@@ -148,7 +153,7 @@ def introduction():
     
     print()
     
-    print_each_word("His reign brought terror. High tax rates for the common person brought poverty and famine. Those that did not obey his rules, or dared to protest or say anything against him or his rules, would be forced to leave this world. Terramagnians would live in fear and misery.")
+    print_each_word(wrap("His reign brought terror. High tax rates for the common person brought poverty and famine. Those that did not obey his rules, or dared to protest or say anything against him or his rules, would be forced to leave this world. Terramagnians would live in fear and misery."))
 
     skip_intro = input("\nPress ENTER to continue or type SKIP to skip intro: ")
 
@@ -157,7 +162,7 @@ def introduction():
     
     print()
     
-    print_each_word("There is only one hope, and that is you. You are the current leader of the Terramagnian Liberation Front (TLF), as of 1230 YAE.")
+    print_each_word(wrap("There is only one hope, and that is you. You are the current leader of the Terramagnian Liberation Front (TLF), as of 1230 YAE."))
 
     skip_intro = input("\nPress ENTER to continue or type SKIP to skip intro: ")
 
@@ -166,7 +171,7 @@ def introduction():
     
     print()
 
-    print_each_word("You spent a lot of time rebelling against various of Heiltur's forces to provide justice to Terramagnian's receiving injustice. You gave them the opportunity to flee from danger.")
+    print_each_word(wrap("You spent a lot of time rebelling against various of Heiltur's forces to provide justice to Terramagnian's receiving injustice. You gave them the opportunity to flee from danger."))
 
     skip_intro = input("\nPress ENTER to continue or type SKIP to skip intro: ")
 
@@ -175,7 +180,7 @@ def introduction():
     
     print()
 
-    print_each_word("After many quests and battles with Heiltur's forces, the time has come to end Heiltur's rule. The three ways to restore Terramagna's former glory are to assassinate Heiltur I, wage a battle with his forces, or enrage the public.")
+    print_each_word(wrap("After many quests and battles with Heiltur's forces, the time has come to end Heiltur's rule. The three ways to restore Terramagna's former glory are to assassinate Heiltur I, wage a battle with his forces, or enrage the public."))
 
 # Choose pathway to end Heiltur I's rule. The main pathway.
 
@@ -201,19 +206,19 @@ def main_pathway():
 def assassination():
     # Print lines
 
-    print_each_word("You start planning on how to assassinate Heiltur I. However, when will it be the right time? Not when Heiltur I is in his palace, because it is guarded with high security.")
+    print_each_word(wrap("You start planning on how to assassinate Heiltur I. However, when will it be the right time? Not when Heiltur I is in his palace, because it is guarded with high security."))
 
     print()
 
     input("Press ENTER to continue\n")
 
-    print_each_word("Fortunately, you hear about Heiltur's plans to do a parade next week. You realize the kill must be delivered secretly.")
+    print_each_word(wrap("Fortunately, you hear about Heiltur's plans to do a parade next week. You realize the kill must be delivered secretly."))
 
     print()
 
     input("Press ENTER to continue\n")
 
-    print_each_word("You find that a poisoned needle launcher is the best way to do that. So, you and your rebels go to gather wood.")
+    print_each_word(wrap("You find that a poisoned needle launcher is the best way to do that. So, you and your rebels go to gather wood."))
 
     print()
 
@@ -238,12 +243,12 @@ def assassination():
 
     # Continue lines
 
-    print_each_word("Then, you catch a poison dart frog. You tip some of your needles with its poison. You are now ready to end the reign of terror.")
+    print_each_word(wrap("Then, you catch a poison dart frog. You tip some of your needles with its poison. You are now ready to end the reign of terror."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("On the day of the parade, you and your rebels disguise yourselves in the crowd, and you ready yourself to fire your poison needle. The emperor is moving toward the crowd on a chariot.")
+    print_each_word(wrap("On the day of the parade, you and your rebels disguise yourselves in the crowd, and you ready yourself to fire your poison needle. The emperor is moving toward the crowd on a chariot."))
 
     print()
 
@@ -265,30 +270,30 @@ def assassination():
     if shoot_time.lower().strip() == "close" and shoot_height.lower().strip() == "middle-high":
         # Continue lines
 
-        print_each_word("You have succeeded in killing emperor Heiltur I. Everyone looks in surprise.")
+        print_each_word(wrap("You have succeeded in killing emperor Heiltur I. Everyone looks in surprise."))
 
         print()
         input("Press ENTER to continue\n")
 
-        print_each_word("You reveal yourself and face everyone. The Terramagnian soldiers run at you, but they are stopped by your arousing speech.")
+        print_each_word(wrap("You reveal yourself and face everyone. The Terramagnian soldiers run at you, but they are stopped by your arousing speech."))
 
         print()
         input("Press ENTER to continue\n")
 
-        print_each_word("\"Dear my fellow Terramagnians, you have lived many years under oppression.\"")
+        print_each_word(wrap("\"Dear my fellow Terramagnians, you have lived many years under oppression.\""))
 
         print()
 
-        print_each_word("\"For many years, our nation and our people suffered through the dictratous rule of the evil Heiltur. This ends TODAY!\"")
+        print_each_word(wrap("\"For many years, our nation and our people suffered through the dictratous rule of the evil Heiltur. This ends TODAY!\""))
 
         print()
 
-        print_each_word("\"It will be an honour to serve as your emperor and make Terramagna great again!\"")
+        print_each_word(wrap("\"It will be an honour to serve as your emperor and make Terramagna great again!\""))
 
         print()
         input("Press ENTER to continue\n")
 
-        print_each_word("Your speech moves the audience so much that they cheer and happily accept you as their new emperor. The Terramagnian soldiers have no choice, but to submit to you.")
+        print_each_word(wrap("Your speech moves the audience so much that they cheer and happily accept you as their new emperor. The Terramagnian soldiers have no choice, but to submit to you."))
 
         print()
         input("Press ENTER to continue\n")
@@ -300,7 +305,7 @@ def assassination():
 
         print("Consequences of invalid input: \n")
 
-        print_each_word("You failed to make the right judgement on time. A Terramagnian soldier notices you aiming your poison needle towards the emperor.")
+        print_each_word(wrap("You failed to make the right judgement on time. A Terramagnian soldier notices you aiming your poison needle towards the emperor."))
 
         print()
 
@@ -314,12 +319,12 @@ def assassination():
     else:
         # Continue
 
-        print_each_word("You attempt to shoot your needle towards the emperor, but you miss.")
+        print_each_word(wrap("You attempt to shoot your needle towards the emperor, but you miss."))
 
         print()
         input("Press ENTER to continue\n")
 
-        print_each_word("The emperor Heiltur I is furious. Terramagnian soldiers come and arrest you and your rebels.")
+        print_each_word(wrap("The emperor Heiltur I is furious. Terramagnian soldiers come and arrest you and your rebels."))
 
         print()
         input("Press ENTER to continue\n")
@@ -331,34 +336,34 @@ def assassination():
 def wage_battle():
     # Print lines
 
-    print_each_word("You decide to wage a battle with Heiltur I. Before waging the battle, you find and recruit more soldiers from various villages to go to battle.")
+    print_each_word(wrap("You decide to wage a battle with Heiltur I. Before waging the battle, you find and recruit more soldiers from various villages to go to battle."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("You hear about Heiltur's plans to do a parade next week. That would be the best time to start a battle since the emperor will be caught off-guard.")
+    print_each_word(wrap("You hear about Heiltur's plans to do a parade next week. That would be the best time to start a battle since the emperor will be caught off-guard."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("On the day of the parade, you bring your forces to the parade. Surprisingly, the soldiers are quickly able to form a sudden defence, and a battle ensues.")
+    print_each_word(wrap("On the day of the parade, you bring your forces to the parade. Surprisingly, the soldiers are quickly able to form a sudden defence, and a battle ensues."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("In order for victory, you must fight your way to the emperor. Your rebels are unable to since they are too busy fighting the emperor's soldiers.")
+    print_each_word(wrap("In order for victory, you must fight your way to the emperor. Your rebels are unable to since they are too busy fighting the emperor's soldiers."))
 
     print()
     input("Press ENTER to continue\n")
 
     # Fight soldiers (random number before you get to emperor)
 
-    print_each_word("Each soldier has a duel pattern that you have to recognize to win.")
+    print_each_word(wrap("Each soldier has a duel pattern that you have to recognize to win."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("The fights will progressively get harder. The emperor has the hardest duel pattern. Good luck!")
+    print_each_word(wrap("The fights will progressively get harder. The emperor has the hardest duel pattern. Good luck!"))
 
     print()
 
@@ -388,7 +393,7 @@ def wage_battle():
         
         # Did you die in battle? 
         if your_health <= 0:
-            print_each_word("You have been killed in battle and the rest of your group is arrested for treason.")
+            print_each_word(wrap("You have been killed in battle and the rest of your group is arrested for treason."))
 
             print()
             input("Press ENTER to continue\n")
@@ -409,7 +414,7 @@ def wage_battle():
     # Did you die in battle? Check for the emperor's battle
  
     if your_health <= 0:
-        print_each_word("You have been killed in battle and the rest of your group is arrested for treason.")
+        print_each_word(wrap("You have been killed in battle and the rest of your group is arrested for treason."))
 
         print()
         input("Press ENTER to continue\n")
@@ -420,12 +425,12 @@ def wage_battle():
     
     # Victory in battle
 
-    print_each_word("Your defeat of Emperor Heiltur I brought shockwaves throughout the empire.")
+    print_each_word(wrap("Your defeat of Emperor Heiltur I brought shockwaves throughout the empire."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("You are crowned the new emperor of Terramagna after the battle. Soldiers give you their loyalty since you proved you are more worthy than Heiltur.")
+    print_each_word(wrap("You are crowned the new emperor of Terramagna after the battle. Soldiers give you their loyalty since you proved you are more worthy than Heiltur."))
 
     print()
     input("Press ENTER to continue\n")
@@ -823,7 +828,7 @@ def calc_damage(your_move: tuple[int, int], enemy_move: tuple[int, int]):
 def enrage_public():
     # Print lines
 
-    print_each_word("Sometimes, the best revolutions are started by the common person. However, the average Terramagnian lives in fear. Your solution to this is sending enraging books to Terramagnians in the night.")
+    print_each_word(wrap("Sometimes, the best revolutions are started by the common person. However, the average Terramagnian lives in fear. Your solution to this is sending enraging books to Terramagnians in the night."))
 
     print()
     input("Press ENTER to continue\n")
@@ -831,12 +836,12 @@ def enrage_public():
     chapters_per_book = 5
     pages_per_chapter = 5
 
-    print_each_word("You draft your book and write %d chapters to encourage Terramagnians to revolt. Each chapter has %d pages." % (chapters_per_book, pages_per_chapter))
+    print_each_word(wrap("You draft your book and write %d chapters to encourage Terramagnians to revolt. Each chapter has %d pages." % (chapters_per_book, pages_per_chapter)))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("However, you have to decide how many copies to make. Using your rebels, you can make 10,000, 30,000, or 50,000 copies.")
+    print_each_word(wrap("However, you have to decide how many copies to make. Using your rebels, you can make 10,000, 30,000, or 50,000 copies."))
 
     print()
 
@@ -867,31 +872,31 @@ def enrage_public():
     # Determine outcome based on # of copies
 
     if num_of_copies == 10000:
-        print_each_word("Unfortunately, you have not printed enough copies for Terramagnians to spread the word and start a rebellion fearlessly.")
+        print_each_word(wrap("Unfortunately, you have not printed enough copies for Terramagnians to spread the word and start a rebellion fearlessly."))
         
         print()
         input("Press ENTER to continue\n")
 
         ending_4()
     elif num_of_copies == 30000:
-        print_each_word("You send your 30,000 copies to many Terramagnians. They feel the rage of revolution from these books.")
+        print_each_word(wrap("You send your 30,000 copies to many Terramagnians. They feel the rage of revolution from these books."))
 
         print()
         input("Press ENTER to continue\n")
 
-        print_each_word("You sent enough copies until the word of revolution spreads to almost every Terramagnian.")
+        print_each_word(wrap("You sent enough copies until the word of revolution spreads to almost every Terramagnian."))
 
         print()
         input("Press ENTER to continue\n")
 
         ending_3()
     else: # 50,000 copies
-        print_each_word("There is no way that 50,000 copies of your enraging material won't spread the word of revolution.")
+        print_each_word(wrap("There is no way that 50,000 copies of your enraging material won't spread the word of revolution."))
 
         print()
         input("Press ENTER to continue\n")
 
-        print_each_word("However, while spreading the messages, one of your rebels is caught and punished horribly. Eventually, he gives in and reveals the location of your hideout.")
+        print_each_word(wrap("However, while spreading the messages, one of your rebels is caught and punished horribly. Eventually, he gives in and reveals the location of your hideout."))
 
         print()
         input("Press ENTER to continue\n")
@@ -903,22 +908,22 @@ def enrage_public():
 # Ending 1
 
 def ending_1():
-    print_each_word("Your entire rebellious group is caught and is unable to defend themselves. The emperor convicts the entire Terramagnian Liberation Front with treason.")
+    print_each_word(wrap("Your entire rebellious group is caught and is unable to defend themselves. The emperor convicts the entire Terramagnian Liberation Front with treason."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("One by one, every member of the TLF is prematurely sent to heaven by sword.")
+    print_each_word(wrap("One by one, every member of the TLF is prematurely sent to heaven by sword."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("Dreams of another rebellion in Terramagna become crushed as Heiltur I strictens his rule and tightens his patrol of the empire.")
+    print_each_word(wrap("Dreams of another rebellion in Terramagna become crushed as Heiltur I strictens his rule and tightens his patrol of the empire."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("After your passing, 'ALL HEIL THE MIGHTY HEILTUR' becomes the new greeting of Terramagna. How could the Ultimate Being allow this?")
+    print_each_word(wrap("After your passing, 'ALL HEIL THE MIGHTY HEILTUR' becomes the new greeting of Terramagna. How could the Ultimate Being allow this?"))
 
     print()
     print_each_word("THE END", 0.5) # delay between each word is 0.5 s
@@ -930,17 +935,17 @@ def ending_1():
 # Ending 2
 
 def ending_2():
-    print_each_word("You become the new emperor of Terramagna. Despite your rebels causing harm to the Terramagnian Army, they submit to your rule and allow your rebels to join the army.")
+    print_each_word(wrap("You become the new emperor of Terramagna. Despite your rebels causing harm to the Terramagnian Army, they submit to your rule and allow your rebels to join the army."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("The general of the Terramagnian army in fact even praises your rebels since throughout your battles against Heiltur's rule, your rebels fought bravely and with skill.")
+    print_each_word(wrap("The general of the Terramagnian army in fact even praises your rebels since throughout your battles against Heiltur's rule, your rebels fought bravely and with skill."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("However, you are not the solution to Terramagna's emperor problem. As time goes on, you find yourself becoming the very Heiltur that you swore to destroy.")
+    print_each_word(wrap("However, you are not the solution to Terramagna's emperor problem. As time goes on, you find yourself becoming the very Heiltur that you swore to destroy."))
 
     print()
     print_each_word("THE END", 0.5)
@@ -952,27 +957,27 @@ def ending_2():
 # Ending 3
 
 def ending_3():
-    print_each_word("You are able to enrage the public enough to start a rebellion. They fight the Terramagnian Army fearlessly.")
+    print_each_word(wrap("You are able to enrage the public enough to start a rebellion. They fight the Terramagnian Army fearlessly."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("Despite many attempts by the army to break the unity of the crowd, the public has had enough.")
+    print_each_word(wrap("Despite many attempts by the army to break the unity of the crowd, the public has had enough."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("They won't be ruled by another dictator again, and they make sure that happens by eventually overthrowing Heiltur I.")
+    print_each_word(wrap("They won't be ruled by another dictator again, and they make sure that happens by eventually overthrowing Heiltur I."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("After the overthrow, educated members of the common people find that the best way to prevent Terramagna from downfall and misery is by establishing a democratic republic, an idea they noticed from the ancient Athlons.")
+    print_each_word(wrap("After the overthrow, educated members of the common people find that the best way to prevent Terramagna from downfall and misery is by establishing a democratic republic, an idea they noticed from the ancient Athlons."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("You are elected to be the first elected leader of Terramagna, and you are not given the chance to be a corrupt leader.")
+    print_each_word(wrap("You are elected to be the first elected leader of Terramagna, and you are not given the chance to be a corrupt leader."))
 
     print()
     print_each_word("THE END", 0.5)
@@ -984,12 +989,12 @@ def ending_3():
 # Ending 4
 
 def ending_4():
-    print_each_word("Your plan to cause a public rebellion fails. Eventually, one of your rebels warns your front that soldiers from the Terramagnian army are heading towards your hideout.")
+    print_each_word(wrap("Your plan to cause a public rebellion fails. Eventually, one of your rebels warns your front that soldiers from the Terramagnian army are heading towards your hideout."))
 
     print()
     input("Press ENTER to continue\n")
 
-    print_each_word("Your group moves from place to place, and it will be years before another opportunity to dethrone Heiltur I arrives.")
+    print_each_word(wrap("Your group moves from place to place, and it will be years before another opportunity to dethrone Heiltur I arrives."))
 
     print()
     print_each_word("THE END", 0.5)
