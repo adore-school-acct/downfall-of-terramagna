@@ -38,13 +38,13 @@ def main():
     # Let user know they can quit anytime -- Ctrl + C normally used to force quit program.
 
     print("You can press Ctrl + C to quit program anytime.\n")
-    
+
     # Begin story through an introduction, main pathway
 
     introduction()
 
     print() # New line
-    
+
     pathway = ""
 
     # Prompt user to select correct option while they do not
@@ -54,11 +54,11 @@ def main():
 
         if pathway == "x":
             print("Invalid option")
-        
+
         print()
-     
+
     # Assassination
-    if pathway == "a": 
+    if pathway == "a":
         assassination()
     # Wage battle
     elif pathway == "b":
@@ -91,7 +91,7 @@ def print_each_word(text: str, delay: float = 0.1):
         # Time delay
 
         time.sleep(delay)
-    
+
     # Newline print
 
     print()
@@ -132,16 +132,16 @@ def introduction():
 
     if skip_intro.upper().strip() == "SKIP":
         return
-    
+
     print()
-    
+
     print_each_word(wrap("For a while, conditions in Terramagna improved. During Terramagna I's rule, Terramagna experienced significant economic growth, the creation of new art and machinery, prosperity, and most importantly, peace."))
 
     skip_intro = input("\nPress ENTER to continue or type SKIP to skip intro: ")
 
     if skip_intro.upper().strip() == "SKIP":
         return
-    
+
     print()
 
     print_each_word(wrap("Good things must always come to an end, though. In 1220 YAE, Terramagna I died from an unknown cause without an heir. The most powerful of noblemen, Heiltur Dictatorus, took over the throne as Heiltur I."))
@@ -150,25 +150,25 @@ def introduction():
 
     if skip_intro.upper().strip() == "SKIP":
         return
-    
+
     print()
-    
+
     print_each_word(wrap("His reign brought terror. High tax rates for the common person brought poverty and famine. Those that did not obey his rules, or dared to protest or say anything against him or his rules, would be forced to leave this world. Terramagnians would live in fear and misery."))
 
     skip_intro = input("\nPress ENTER to continue or type SKIP to skip intro: ")
 
     if skip_intro.upper().strip() == "SKIP":
         return
-    
+
     print()
-    
+
     print_each_word(wrap("There is only one hope, and that is you. You are the current leader of the Terramagnian Liberation Front (TLF), as of 1230 YAE."))
 
     skip_intro = input("\nPress ENTER to continue or type SKIP to skip intro: ")
 
     if skip_intro.upper().strip() == "SKIP":
         return
-    
+
     print()
 
     print_each_word(wrap("You spent a lot of time rebelling against various of Heiltur's forces to provide justice to Terramagnian's receiving injustice. You gave them the opportunity to flee from danger."))
@@ -177,7 +177,7 @@ def introduction():
 
     if skip_intro.upper().strip() == "SKIP":
         return
-    
+
     print()
 
     print_each_word(wrap("After many quests and battles with Heiltur's forces, the time has come to end Heiltur's rule. The three ways to restore Terramagna's former glory are to assassinate Heiltur I, wage a battle with his forces, or enrage the public."))
@@ -238,7 +238,7 @@ def assassination():
         print("You have %d swings left" % swings_left)
         input("Press ENTER to chop wood ")
         print()
- 
+
     print("You chopped out a piece of wood!\n")
 
     # Continue lines
@@ -253,7 +253,7 @@ def assassination():
     print()
 
     # Poison needle assassination
-    
+
     print("When do you shoot?")
 
     shoot_time = input("Do you shoot when he is [far], [halfway], or [close]? ")
@@ -378,7 +378,7 @@ def wage_battle():
     for i in range(num_of_soldiers):
         # Fighting game
 
-        # First quarter of soldiers 
+        # First quarter of soldiers
         if i < num_of_soldiers // 4:
             your_health = fight_soldier(1, your_health)
         # Second quarter of soldiers
@@ -390,8 +390,8 @@ def wage_battle():
         # Final quarter of soldiers
         else:
             your_health = fight_soldier(4, your_health)
-        
-        # Did you die in battle? 
+
+        # Did you die in battle?
         if your_health <= 0:
             print_each_word(wrap("You have been killed in battle and the rest of your group is arrested for treason."))
 
@@ -401,9 +401,9 @@ def wage_battle():
             ending_1()
 
             return
-    
+
     # Fight the emperor
-    
+
     print_each_word("You now stand face-to-face with Emperor Heiltur I.")
 
     print()
@@ -412,7 +412,7 @@ def wage_battle():
     your_health = fight_emperor(your_health)
 
     # Did you die in battle? Check for the emperor's battle
- 
+
     if your_health <= 0:
         print_each_word(wrap("You have been killed in battle and the rest of your group is arrested for treason."))
 
@@ -422,7 +422,7 @@ def wage_battle():
         ending_1()
 
         return
-    
+
     # Victory in battle
 
     print_each_word(wrap("Your defeat of Emperor Heiltur I brought shockwaves throughout the empire."))
@@ -462,7 +462,7 @@ def fight_soldier(pattern: int, your_health: int) -> int:
         duel_pattern = [(2, 1), (7, 0), (3, 2), (6, 2), (8, 0), (1, 1), (2, 2), (7, 0), (3, 1), (6, 1), (8, 0), (1, 2)]
     else:
         raise ValueError("Invalid soldier pattern")
-    
+
     # Duel with soldier. Continues until one dies.
 
     enemy_health = 100
@@ -504,7 +504,7 @@ def fight_soldier(pattern: int, your_health: int) -> int:
                 # Punish the user for invalid input. They get 12 damage from enemy if they attack.
                 duel_option = 0
                 direction = 0
-            
+
             # Validate direction answers if they have been given.
             # If direction option is invalid, punish the user. They get 12 damage from enemy if they attack.
 
@@ -517,14 +517,14 @@ def fight_soldier(pattern: int, your_health: int) -> int:
             elif 7 <= duel_option <= 8 and direction != 0:
                 duel_option = 0
                 direction = 0
-            
+
             # Print attacks made from both sides
-            
+
         except ValueError:
             # Punish the user for invalid input. They get 12 damage from enemy if they attack.
             duel_option = 0
             direction = 0
-        
+
         # Decide outcome and print your and enemy attacks
 
         # Damage point system
@@ -545,7 +545,7 @@ def fight_soldier(pattern: int, your_health: int) -> int:
             your_health = 0
         else:
             your_health -= your_damage
-        
+
         if enemy_health - enemy_damage < 0:
             enemy_health = 0
         else:
@@ -563,13 +563,13 @@ def fight_soldier(pattern: int, your_health: int) -> int:
             enemy_index = 0
         else:
             enemy_index += 1
-    
+
     # Message if battle is won. Losing message in battle waged.
 
     if enemy_health <= 0 and your_health > 0:
         print("You have defeated the soldier.\n")
         time.sleep(0.5)
-    
+
     return your_health
 
 # Sub-function of Pathway C --- Fight with Heiltur I, almost the same as fight_soldier()
@@ -620,7 +620,7 @@ def fight_emperor(your_health: int) -> int:
                 # Punish the user for invalid input. They get 12 damage from enemy if they attack.
                 duel_option = 0
                 direction = 0
-            
+
             # Validate direction answers if they have been given.
             # If direction option is invalid, punish the user. They get 12 damage from enemy if they attack.
 
@@ -633,14 +633,14 @@ def fight_emperor(your_health: int) -> int:
             elif 7 <= duel_option <= 8 and direction != 0:
                 duel_option = 0
                 direction = 0
-            
+
             # Print attacks made from both sides
-            
+
         except ValueError:
             # Punish the user for invalid input. They get 12 damage from enemy if they attack.
             duel_option = 0
             direction = 0
-        
+
         # Decide outcome and print your and enemy attacks
 
         # Damage point system
@@ -661,7 +661,7 @@ def fight_emperor(your_health: int) -> int:
             your_health = 0
         else:
             your_health -= your_damage
-        
+
         if enemy_health - enemy_damage < 0:
             enemy_health = 0
         else:
@@ -679,22 +679,22 @@ def fight_emperor(your_health: int) -> int:
             enemy_index = 0
         else:
             enemy_index += 1
-    
+
     # Message if battle is won. Losing message in battle waged.
 
     if enemy_health <= 0 and your_health > 0:
         print("You have defeated Heiltur I. Long live Terramagna!\n")
         time.sleep(0.5)
-    
+
     return your_health
 
 # Print duel move message based on move tuple given: (duel_option, direction) for both sides
 
-def print_duel_msg(move: tuple[int, int], who: int):
+def print_duel_msg(move, who: int):
     # If who = 0, it's you, if who = 1, it's a soldier, if who = 2, its the emperor
     if who not in {0, 1, 2}:
         raise ValueError("Invalid 'who' value")
-    
+
     # Face the consequences of invalid input
     if move == (0, 0):
         if who != 0: raise ValueError("Invalid move")
@@ -764,7 +764,7 @@ def print_duel_msg(move: tuple[int, int], who: int):
 
 # Calculate damage in fights with soldiers and emperor, returns a tuple: (your_damage, enemy_damage)
 
-def calc_damage(your_move: tuple[int, int], enemy_move: tuple[int, int]):
+def calc_damage(your_move, enemy_move):
     # Raise error if invalid input given
     valid_inputs = {(0, 0), (1, 1), (1, 2), (2, 1), (2, 2), (3, 1), (3, 2), (4, 1), (4, 2), (5, 1), (5, 2), (6, 1), (6, 2), (7, 0), (8, 0)}
 
@@ -772,16 +772,16 @@ def calc_damage(your_move: tuple[int, int], enemy_move: tuple[int, int]):
         raise ValueError("Invalid move given")
 
     # -10 damage to both sides, both sides attack
-    
+
     # You do any attack and enemy does any attack
     if your_move[0] in {1, 2, 3} and enemy_move[0] in {1, 2, 3}:
         return 10, 10
-    
+
     # -20 damage to you for invalid input if enemy attacks
-    
+
     elif your_move == (0, 0) and enemy_move[0] in {1, 2, 3}:
         return 20, 0
-    
+
     # -20 damage to enemy, one-side attack from you
 
     # You do leg attack and enemy does not block leg attack or jump
@@ -799,7 +799,7 @@ def calc_damage(your_move: tuple[int, int], enemy_move: tuple[int, int]):
         return 0, 20
     elif your_move == (3, 2) and (enemy_move != (6, 2) and enemy_move != (8, 0)): # RIGHT
         return 0, 20
-    
+
     # -20 damage to you, one-side attack from enemy
 
     # Enemy does leg attack and you do not block leg attack and jump
@@ -817,9 +817,9 @@ def calc_damage(your_move: tuple[int, int], enemy_move: tuple[int, int]):
         return 20, 0
     elif enemy_move == (3, 2) and (your_move != (6, 2) and your_move != (8, 0)): # RIGHT
         return 20, 0
-    
+
     # No damage, means attack was blocked or no attack was made
-    
+
     else:
         return 0, 0
 
@@ -856,24 +856,24 @@ def enrage_public():
 
             if num_of_copies not in {10000, 30000, 50000}:
                 print("Enter 10000, 30000, or 50000 for the number of copies")
-            
+
             print()
         except ValueError:
             print("Enter 10000, 30000, or 50000 for the number of copies")
             print()
-    
+
     for _ in range(num_of_copies // 1000):
         for _ in range(1000 // 50):
             print("📕" * 50)
             time.sleep(0.001)
-            
+
     print("\n")
-    
+
     # Determine outcome based on # of copies
 
     if num_of_copies == 10000:
         print_each_word(wrap("Unfortunately, you have not printed enough copies for Terramagnians to spread the word and start a rebellion fearlessly."))
-        
+
         print()
         input("Press ENTER to continue\n")
 
